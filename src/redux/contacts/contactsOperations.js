@@ -3,25 +3,35 @@ import { getItems, addItems, deleteItems } from 'apiServices/apiServices';
 
 export const fetchContacts = createAsyncThunk(
   'contacts/fetchContacts',
-  async () => {
-    const { data } = await getItems();
-    return data;
+  async (_, { rejectWithValue }) => {
+    try {
+      const { data } = await getItems();
+      return data;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
   }
 );
 
 export const addContacts = createAsyncThunk(
   'contacts/addContacts',
-  async contact => {
-    const { data } = await addItems(contact);
-
-    return data;
+  async (contact, { rejectWithValue }) => {
+    try {
+      const { data } = await addItems(contact);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
   }
 );
 export const deleteContacts = createAsyncThunk(
   'contacts/deleteContacts',
-  async contact => {
-    const { data } = await deleteItems(contact);
-    console.log(data);
-    return data;
+  async (contact, { rejectWithValue }) => {
+    try {
+      const { data } = await deleteItems(contact);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
   }
 );
