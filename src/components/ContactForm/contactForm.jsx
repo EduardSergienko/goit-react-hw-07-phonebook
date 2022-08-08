@@ -25,13 +25,15 @@ export default function ContactForm() {
   };
   const onSubmiteForm = e => {
     e.preventDefault();
-    dispatch(addContacts({ name, number }));
+
     if (
       contactsItems.some(
         contact => contact.name.toLowerCase() === name.toLowerCase()
       )
     ) {
       return alert(`${name} is already in contacts`);
+    } else {
+      dispatch(addContacts({ name, number }));
     }
 
     reset();
