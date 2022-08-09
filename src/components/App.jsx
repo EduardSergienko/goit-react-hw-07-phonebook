@@ -17,6 +17,7 @@ export default function App() {
       {isLoading
         ? Loading.circle({
             svgColor: '#3152f5',
+            backgroundColor: 'rgba(0,0,0,0.2)',
           })
         : Loading.remove()}
       <ContactList />
